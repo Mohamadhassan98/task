@@ -1,0 +1,189 @@
+@import "~vuetify/src/styles/styles.sass";
+
+@font-face {
+  font-family: 'IRYekan';
+  src: url('~assets/fonts/eot/iranyekanwebbold(fanum).eot?#') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/woff2/iranyekanwebbold(fanum).woff2')
+  format('woff2'),
+    /* Chrome36+, Opera24+*/
+  url('~assets/fonts/woff/iranyekanwebbold(fanum).woff')
+  format('woff');
+
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'IRYekan';
+  src: url('~assets/fonts/eot/iranyekanweblight(fanum).eot?#') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/woff2/iranyekanweblight(fanum).woff2')
+  format('woff2'),
+    /* Chrome36+, Opera24+*/
+  url('~assets/fonts/woff/iranyekanweblight(fanum).woff')
+  format('woff');
+
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'IRYekan';
+  src: url('~assets/fonts/eot/iranyekanwebregular(fanum).eot?#') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/woff2/iranyekanwebregular(fanum).woff2')
+  format('woff2'),
+    /* Chrome36+, Opera24+*/
+  url('~assets/fonts/woff/iranyekanwebregular(fanum).woff')
+  format('woff');
+
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'IRANSans';
+  src: url('~assets/fonts/eot/IRANSansWeb(FaNum)_Light.eot?#') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/eot/IRANSansWeb(FaNum)_Light.eot')
+  format('woff2'),
+    /* Chrome36+, Opera24+*/
+  url('~assets/fonts/woff/IRANSansWeb(FaNum)_Light.woff')
+  format('woff');
+
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'IRANSans';
+  src: url('~assets/fonts/eot/IRANSansWeb(FaNum)_Bold.eot?#') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/eot/IRANSansWeb(FaNum)_Bold.eot')
+  format('woff2'),
+    /* Chrome36+, Opera24+*/
+  url('~assets/fonts/woff/IRANSansWeb(FaNum)_Bold.woff')
+  format('woff');
+
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'IRANSans';
+  src: url('~assets/fonts/eot/IRANSansWeb(FaNum)_Medium.eot?#') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/eot/IRANSansWeb(FaNum)_Medium.eot')
+  format('woff2'),
+    /* Chrome36+, Opera24+*/
+  url('~assets/fonts/woff/IRANSansWeb(FaNum)_Medium.woff')
+  format('woff');
+
+  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+  font-weight: 600;
+}
+.v-application--wrap {
+  font-family: 'IRANSans', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+body,
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+label,
+td,
+div,
+.v-card__title {
+  font-family: 'IRANSans', sans-serif !important;
+  font-weight: 600 !important;
+}
+th {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+.row {
+  margin: 0 !important;
+}
+.section-border {
+  border: 1px solid #e8eaf6;
+  border-radius: 5px;
+  padding: 10px;
+}
+.v-dialog {
+  position: absolute;
+  top: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.vpd-input-group input {
+  border: 1px solid #959595 !important;
+  height: 40px !important;
+  border-radius: 3px !important;
+  background-color: #f0f0f0 !important;
+  width: 100% !important;
+}
+.vpd-icon-btn {
+  position: relative !important;
+  background-color: rgb(103 103 103) !important;
+  border-radius: 3px !important;
+  margin-right: 18px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  left: -2px !important;
+}
+.v-tooltip__content {
+  pointer-events: all !important;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.swal2-container {
+  direction: rtl;
+  font-family: $body-font-family;
+}
+.swal2-popup {
+  background: var(--v-accent-base);
+}
+.swal2-title,
+.swal2-html-container {
+  color: var(--v-text-base);
+  white-space: pre-line;
+}
+.swal2-styled {
+  &.swal2-confirm {
+    background-color: var(--v-success-base);
+  }
+  &.swal2-cancel {
+    background-color: var(--v-error-base);
+  }
+}
+.swal2-icon {
+  &.swal2-question {
+    color: var(--v-primary-base);
+    border-color: var(--v-primary-lighten1);
+  }
+  &.swal2-success {
+    color: var(--v-success-base);
+    border-color: var(--v-success-lighten1);
+  }
+  &.swal2-warning {
+    color: var(--v-warning-base);
+    border-color: var(--v-warning-lighten1);
+  }
+  &.swal2-error {
+    color: var(--v-error-base);
+    border-color: var(--v-error-lighten1);
+  }
+  &.swal2-info {
+    color: var(--v-info-base);
+    border-color: var(--v-info-lighten1);
+  }
+}
