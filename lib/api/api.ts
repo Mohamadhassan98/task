@@ -14,7 +14,11 @@
 
 
 
+export * from './api/apply-api';
+export * from './api/generate-api';
 export * from './api/help-api';
 export * from './api/participant-api';
 export * from './api/question-api';
+export * from './api/register-api';
+export * from './api/training-generate-api';
 

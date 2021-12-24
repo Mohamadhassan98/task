@@ -1,11 +1,23 @@
 <template>
   <v-card width="100vw" min-height="100vh" class="wrapper">
     <v-card-title class="d-flex flex-column align-start">
-      آموزش تست
+      آزمون {{ $route.query.training ? 'آزمایشی' : 'اصلی' }}
       <v-divider class="divider" />
     </v-card-title>
-    <v-card-text class="d-flex flex-column align-center">
-      <v-progress-circular v-show="!current" indeterminate />
+    <v-card-text
+      class="d-flex flex-column align-center justify-start flex-grow-1"
+    >
+      <template v-if="!current && !loadingState">
+        <div class="text-center my-16">
+          در حال بارگیری تصاویر هستیم.
+          <br />
+          لطفاً منتظر بمانید.
+        </div>
+        <v-progress-circular indeterminate size="64" />
+      </template>
+      <span v-if="loadingState" class="loader mt-16">
+        {{ loadingState }}
+      </span>
       <my-image
         v-for="image in info.images"
         v-show="current === image.id"
@@ -22,19 +34,20 @@
         class="loading-image"
       />
     </v-card-text>
-    <v-card-actions>
-      <v-spacer />
-      <v-btn to="/continue" color="primary"> ورود به آزمون آزمایشی </v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { TaskInfo, TrainingGenerateApiFp } from '~/lib/api';
+import {
+  ApplyApiFp,
+  GenerateApiFp,
+  TaskInfo,
+  TrainingGenerateApiFp,
+} from '~/lib/api';
 
 export default Vue.extend({
-  name: 'Continue',
+  name: 'Task',
   data() {
     return {
       info: {
@@ -49,29 +62,57 @@ export default Vue.extend({
       progress: null as number | null,
       interval: null as number | null,
       apply: [] as { image: number; start: number; end: number | null }[],
+      loadingInterval: null as number | null,
+      loadingState: '',
     };
   },
   watch: {
     loadedCount(val) {
       if (val === this.info.images.length) {
-        this.nextImage();
+        console.log(val);
+        this.loadingState = '3';
+        this.loadingInterval = window.setInterval(() => {
+          if (this.loadingState && isNaN(+this.loadingState)) {
+            clearInterval(this.loadingInterval || 0);
+            this.loadingState = '';
+            this.loadingInterval = null;
+            this.nextImage();
+          } else {
+            this.loadingState = (+this.loadingState - 1 || 'شروع').toString();
+          }
+        }, 1000);
       }
     },
   },
   mounted() {
+    if (!this.$store.state.signUp.participant?.mobile_number) {
+      this.$router.replace('/login');
+      return;
+    }
     document.onkeydown = ev => {
       if (ev.key === ' ') {
         this.repeated();
         this.nextImage();
       }
     };
-    TrainingGenerateApiFp()
-      .trainingGenerateRead()
-      .then(res =>
-        res().then(res => {
-          this.info = res.data;
-        })
-      );
+    if (this.$route.query.training) {
+      TrainingGenerateApiFp()
+        .trainingGenerateRead()
+        .then(res =>
+          res().then(res => {
+            this.info = res.data;
+            this.loadedCount = 5;
+          })
+        );
+    } else {
+      GenerateApiFp()
+        .generateRead()
+        .then(res =>
+          res().then(res => {
+            this.info = res.data;
+          })
+        );
+    }
   },
   methods: {
     nextImage() {
@@ -92,7 +133,21 @@ export default Vue.extend({
           image: a.image,
           reaction_time: a.end === null ? null : a.end - a.start,
         }));
-        console.log(result);
+        if (this.$route.query.training) {
+          this.$router.push('/actual-training');
+        } else {
+          ApplyApiFp()
+            .applyCreate({
+              mobile_number: this.$store.state.signUp.participant.mobile_number,
+              reaction_times: result,
+            })
+            .then(res =>
+              res().then(res => {
+                this.$store.commit('setResult', res.data);
+                this.$router.push('/result');
+              })
+            );
+        }
         return;
       }
       this.apply = [
@@ -141,8 +196,12 @@ export default Vue.extend({
   transition-duration: 30ms;
 }
 .image {
-  width: 500px;
-  height: auto;
+  width: auto;
+  height: min(500px, 100vh - 150px);
   margin-bottom: 20px;
+}
+.loader {
+  font-weight: 700;
+  font-size: 30px;
 }
 </style>

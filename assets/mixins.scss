@@ -1,3 +1,6 @@
+$app-mobile-max-width: 768px;
+$app-desktop-min-width: 769px;
+$app-container-max-width: 1200px;
 @mixin f-gap($size, $flex-dir: row, $flex-wrap: nowrap, $direction: rtl) {
 	> * {
 		@if ($flex-wrap == nowrap) {
@@ -72,28 +75,14 @@
 	}
 }
 
-@mixin desktop-only($panel: false) {
-	@if($panel) {
-		@media (min-width: $app-panel-desktop-min-width) {
-			@content;
-		}
-	}
-	@else {
-		@media (min-width: $app-desktop-min-width) {
-			@content;
-		}
-	}
+@mixin desktop-only() {
+  @media (min-width: $app-desktop-min-width) {
+    @content;
+  }
 }
 
-@mixin mobile-only($panel: false) {
-	@if($panel) {
-		@media (max-width: $app-panel-mobile-max-width) {
-			@content;
-		}
-	}
-	@else {
-		@media (max-width: $app-mobile-max-width) {
-			@content;
-		}
-	}
+@mixin mobile-only() {
+  @media (max-width: $app-mobile-max-width) {
+    @content;
+  }
 }

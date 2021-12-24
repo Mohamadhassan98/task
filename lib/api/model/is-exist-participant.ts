@@ -26,6 +26,12 @@ export interface IsExistParticipant {
      * @memberof IsExistParticipant
      */
     is_exist?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof IsExistParticipant
+     */
+    task_date: string;
 }
 
 

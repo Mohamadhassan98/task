@@ -24,7 +24,11 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/validators.ts'],
+  plugins: [
+    '~/plugins/formatters.ts',
+    '~/plugins/moment.js',
+    '~/plugins/validators.ts',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

@@ -34,7 +34,7 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         questionRead: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/question/`;
+            const localVarPath = `/question`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;

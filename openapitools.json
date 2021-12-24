@@ -4,120 +4,16 @@
 	"generator-cli": {
 		"version": "5.2.1",
 		"generators": {
-			"auth": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
+			"api": {
 				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/AuthApi",
-				"inputSpec": "https://auth.dev.mrbilit.com/swagger/v1/swagger.json",
+				"output": "#{cwd}/lib/api",
+				"inputSpec": "http://192.168.43.123:8000/doc?format=openapi",
 				"apiPackage": "api",
 				"modelPackage": "model",
 				"additionalProperties": {
 					"supportsES6": true,
 					"withSeparateModelsAndApi": true,
 					"useSingleRequestParameter": true
-				},
-				"skipValidateSpec": true
-			},
-			"bill": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/BillApi",
-				"inputSpec": "https://bill.dev.mrbilit.com/swagger/v1/swagger.json",
-				"modelPackage": "model",
-				"apiPackage": "api",
-				"additionalProperties": {
-					"supportsES6": true,
-					"withSeparateModelsAndApi": true
-				},
-				"skipValidateSpec": true
-			},
-			"charter": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/CharterApi",
-				"inputSpec": "https://charter.dev.mrbilit.com/swagger/v1/swagger.json",
-				"additionalProperties": {
-					"supportsES6": "true"
-				},
-				"skipValidateSpec": true
-			},
-			"coupon": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/CouponApi",
-				"inputSpec": "https://coupon.dev.mrbilit.com/swagger/v1/swagger.json",
-				"modelPackage": "model",
-				"apiPackage": "api",
-				"additionalProperties": {
-					"supportsES6": true,
-					"withSeparateModelsAndApi": true,
-					"useSingleRequestParameter": true
-				},
-				"skipValidateSpec": true
-			},
-			"hotel": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/HotelApi",
-				"inputSpec": "https://hotel.dev.mrbilit.com/swagger/v1/swagger.json",
-				"modelPackage": "model",
-				"apiPackage": "api",
-				"additionalProperties": {
-					"supportsES6": true,
-					"withSeparateModelsAndApi": true,
-					"useSingleRequestParameter": true
-				},
-				"skipValidateSpec": true
-			},
-			"payment": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/PaymentApi",
-				"inputSpec": "https://payment.dev.mrbilit.com/swagger/v1/swagger.json",
-				"modelPackage": "model",
-				"apiPackage": "api",
-				"additionalProperties": {
-					"supportsES6": true,
-					"withSeparateModelsAndApi": true,
-					"useSingleRequestParameter": true
-				},
-				"skipValidateSpec": true
-			},
-			"planned": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/PlannedApi",
-				"inputSpec": "https://planned.dev.mrbilit.com/swagger/v1/swagger.json",
-				"modelPackage": "model",
-				"apiPackage": "api",
-				"additionalProperties": {
-					"supportsES6": true,
-					"withSeparateModelsAndApi": true,
-					"useSingleRequestParameter": true
-				},
-				"skipValidateSpec": true
-			},
-			"train": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/TrainApi",
-				"inputSpec": "https://train.dev.mrbilit.com/swagger/v1/swagger.json",
-				"modelPackage": "model",
-				"apiPackage": "api",
-				"additionalProperties": {
-					"supportsES6": true,
-					"withSeparateModelsAndApi": true,
-					"useSingleRequestParameter": true
-				},
-				"skipValidateSpec": true
-			},
-			"trip_change": {
-				"auth": "authorization:Basic%20bXJiaWxpdDpPcHBvcnR1bml0aWVzQXJlUGFzc2luZ0xpa2VDbG91ZHNJblNreQ==",
-				"generatorName": "typescript-axios",
-				"output": "#{cwd}/lib/TripChangeApi",
-				"inputSpec": "https://tripchange.dev.mrbilit.com/swagger/v1/swagger.json",
-				"additionalProperties": {
-					"supportsES6": "true"
 				},
 				"skipValidateSpec": true
 			}

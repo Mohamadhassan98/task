@@ -51,6 +51,12 @@ export interface ApplyTask {
      * @memberof ApplyTask
      */
     reaction_time_mean?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApplyTask
+     */
+    text?: string;
 }
 
 

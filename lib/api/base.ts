@@ -13,12 +13,12 @@
  */
 
 
-import { Configuration } from "./configuration";
 // Some imports not used depending on template conditions
 // @ts-ignore
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, {AxiosInstance, AxiosPromise} from 'axios';
+import {Configuration} from "./configuration";
 
-export const BASE_PATH = "http://192.168.43.123:8000/task".replace(/\/+$/, "");
+export const BASE_PATH = `${process.env.host || 'http://192.168.43.123:8000'}/task`.replace(/\/+$/, "");
 
 /**
  *

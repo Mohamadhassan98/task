@@ -13,6 +13,7 @@
  */
 
 
+import { Answer } from './answer';
 
 /**
  * 
@@ -40,10 +41,10 @@ export interface Question {
     next_id?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {Array<Answer>}
      * @memberof Question
      */
-    answers?: string;
+    answers: Array<Answer>;
 }
 
 

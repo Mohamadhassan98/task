@@ -1,12 +1,12 @@
 <template>
-  <img ref="image" />
+  <img ref="image" @click="$emit('click')" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Image',
+  name: 'MyImage',
   props: {
     src: {
       type: String,
