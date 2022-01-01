@@ -8,7 +8,7 @@
       <v-btn x-large color="primary" to="/task" class="mt-16 mb-16">
         ورود به مرحله اصلی آزمون
       </v-btn>
-      <v-btn large color="secondary" to="/task?training=true">
+      <v-btn x-large color="secondary" to="/task?training=true">
         انجام مجدد مرحله آزمایشی
       </v-btn>
     </v-card-text>

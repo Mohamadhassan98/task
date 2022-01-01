@@ -1,9 +1,9 @@
 <template>
   <v-card v-if="questions.length" width="100vw">
-    <v-card-subtitle>
+    <v-card-subtitle class="question">
       {{ last + 1 }}. {{ questions[last].text }}
     </v-card-subtitle>
-    <v-card-text>
+    <v-card-text class="font">
       <v-radio-group v-model="questions[last].answer" @change="next">
         <v-radio
           v-for="answer in questions[last].answers"
@@ -104,3 +104,13 @@ export default Vue.extend({
   },
 });
 </script>
+<style lang="scss" scoped>
+.font {
+  ::v-deep.v-label {
+    font-size: 20px !important;
+  }
+}
+.question {
+  font-size: 18px;
+}
+</style>

@@ -18,7 +18,7 @@
 import globalAxios, {AxiosInstance, AxiosPromise} from 'axios';
 import {Configuration} from "./configuration";
 
-export const BASE_PATH = `${process.env.host || 'http://192.168.43.123:8000'}/task`.replace(/\/+$/, "");
+export const BASE_PATH = `${process.env.baseUrl || 'http://192.168.43.123:8000'}/task`.replace(/\/+$/, "");
 
 /**
  *
@@ -55,7 +55,7 @@ export class BaseAPI {
             this.basePath = configuration.basePath || this.basePath;
         }
     }
-};
+}
 
 /**
  *

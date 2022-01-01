@@ -1,7 +1,7 @@
 <template>
   <v-card width="100vw" height="100vh" class="wrapper">
     <v-card-title class="d-flex flex-column align-start">
-      آموزش تست
+      آموزش انجام آزمون
       <v-divider class="divider" />
     </v-card-title>
     <v-card-text class="terms">
@@ -12,8 +12,8 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer />
-      <v-btn to="/task?training=true" color="primary">
-        ورود به آزمون آزمایشی
+      <v-btn x-large to="/task?training=true" color="primary">
+        انجام آزمایشی آزمون
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -60,9 +60,9 @@ export default Vue.extend({
   width: calc(100% - 64px);
   p {
     text-align: justify;
+    font-size: 16px;
   }
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px 32px;
   overflow-y: auto;
 }
 .divider {

@@ -1,22 +1,14 @@
 <template>
   <v-card width="100vw" height="100vh" class="wrapper">
-    <v-card-title>قوانین و شرایط شرکت در پژوهش</v-card-title>
-    <v-card-subtitle>لطفاً شرایط زیر را با دقت بخوانید.</v-card-subtitle>
+    <v-card-title>درباره این پژوهش و شرایط شرکت در آن</v-card-title>
+    <v-card-subtitle>لطفاً متن زیر را با دقت بخوانید.</v-card-subtitle>
     <v-card-text class="terms">
       <p>{{ terms }}</p>
     </v-card-text>
     <v-card-actions>
       <v-spacer />
-      <v-btn
-        :x-large="!mobile"
-        max-width="calc(100vw - 16px)"
-        to="/introduce"
-        left
-        color="primary"
-      >
-        <span class="class">
-          {{ submitText }}
-        </span>
+      <v-btn :x-large="!mobile" to="/questions" left color="primary">
+        مرحله بعد
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -33,15 +25,6 @@ export default Vue.extend({
       terms: '',
       mobile: window.innerWidth < 600,
     };
-  },
-  computed: {
-    submitText(): string {
-      if (this.mobile) {
-        return 'با تمامی شرایط و قوانین موافقم.';
-      } else {
-        return 'ضمن مطالعه دقیق متن فوق، با تمامی شرایط و قوانین این پژوهش موافقم.';
-      }
-    },
   },
   mounted() {
     if (!this.$store.state.signUp.participant?.mobile_number) {
@@ -71,9 +54,10 @@ export default Vue.extend({
   width: calc(100% - 64px);
   p {
     text-align: justify;
+    font-size: 16px;
   }
-  padding-top: 16px;
-  padding-bottom: 16px;
+
+  padding: 16px 32px;
   overflow-y: auto;
 }
 </style>

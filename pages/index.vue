@@ -1,8 +1,22 @@
 <template>
   <div class="background">
+    <div>
+      امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
+      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
+      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
+      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
+      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.
+    </div>
     <v-btn x-large to="/login" class="btn">ورود برای شرکت در پژوهش</v-btn>
   </div>
 </template>
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  layout: 'full-width',
+});
+</script>
 <style lang="scss" scoped>
 .background {
   background-image: url('/back.jpg');
@@ -16,10 +30,32 @@
   height: 100%;
   background-size: cover;
   background-position-x: center;
+  > div {
+    width: min(400px, 100vw - 32px);
+    position: absolute;
+    top: 20%;
+    left: 12.5%;
+    color: white;
+    @include mobile-only {
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  }
   .btn {
     position: absolute;
     top: 70%;
     left: 20%;
+    @include mobile-only {
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      width: fit-content;
+    }
   }
 }
 </style>

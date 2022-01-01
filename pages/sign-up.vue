@@ -41,7 +41,7 @@
               :items="educationItems"
               dense
               outlined
-              label="آخرین مدرک تحصیلی"
+              label="سطح تحصیلات"
               :rules="[$required]"
             />
           </v-col>
@@ -65,6 +65,32 @@
       </v-card-text>
       <v-card-title>فرم اطلاعات ذهنی - روان‌شناختی</v-card-title>
       <v-card-text>
+        <v-row align="baseline">
+          <v-col cols="12" md="9">
+            <p>{{ formText.mental_disorder }}</p>
+          </v-col>
+          <v-col cols="12" md="9" class="d-flex">
+            <v-checkbox
+              v-for="(mental, index) in mentalItems"
+              :key="mental.value"
+              v-model="mentalDisorders"
+              multiple
+              :hide-details="index !== mentalItems.length - 1"
+              :value="mental.value"
+              :label="mental.text"
+              class="ml-2"
+            />
+          </v-col>
+          <v-col v-if="mentalDisorders.includes(4)" cols="12" md="3">
+            <v-text-field
+              v-model="otherMental"
+              label="نوع بیماری"
+              :rules="[$required]"
+              dense
+              outlined
+            />
+          </v-col>
+        </v-row>
         <v-row>
           <v-col cols="12">
             <v-radio-group
@@ -75,30 +101,8 @@
             >
               <v-radio :value="0" label="خیر" />
               <v-radio :value="1" label="۱ بار" />
-              <v-radio :value="2" label="۲ بار و بیشتر" />
+              <v-radio :value="2" label="۲ بار و یا بیشتر" />
             </v-radio-group>
-          </v-col>
-        </v-row>
-        <v-row align="baseline">
-          <v-col cols="12" md="9">
-            <v-radio-group
-              v-model="hasMentalDisorder"
-              :rules="[$required]"
-              :label="formText.mental_disorder || ''"
-              row
-            >
-              <v-radio :value="false" label="خیر" />
-              <v-radio :value="true" label="بله" />
-            </v-radio-group>
-          </v-col>
-          <v-col v-if="hasMentalDisorder" cols="12" md="3">
-            <v-text-field
-              v-model="health.mental_disorder"
-              label="نوع بیماری"
-              :rules="[$required]"
-              dense
-              outlined
-            />
           </v-col>
         </v-row>
         <v-row>
@@ -110,8 +114,7 @@
               row
             >
               <v-radio :value="0" label="خیر" />
-              <v-radio :value="1" label="۱ بار" />
-              <v-radio :value="2" label="۲ بار و بیشتر" />
+              <v-radio :value="1" label="بله" />
             </v-radio-group>
           </v-col>
         </v-row>
@@ -143,8 +146,27 @@ export default Vue.extend({
       formText: {} as GetHealthQuestion,
       participant: {} as TaskRegister['participant'],
       health: {} as TaskRegister['health'],
-      hasMentalDisorder: undefined as boolean | undefined,
+      mentalDisorders: [] as number[],
       ParticipantGenderEnum,
+      otherMental: '',
+      mentalItems: [
+        {
+          text: 'سکته یا تومور مغزی',
+          value: 1,
+        },
+        {
+          text: 'اختلال خفیف شناختی',
+          value: 2,
+        },
+        {
+          text: 'آلزایمر (زوال عقل)',
+          value: 3,
+        },
+        {
+          text: 'سایر',
+          value: 4,
+        },
+      ],
       educationItems: [
         {
           text: 'بی‌سواد',
@@ -169,13 +191,6 @@ export default Vue.extend({
       ],
     };
   },
-  watch: {
-    hasMentalDisorder(val) {
-      if (!val) {
-        this.health.mental_disorder = undefined;
-      }
-    },
-  },
   mounted() {
     const mobileNumber = this.$store.state.signUp.participant?.mobile_number;
     if (!mobileNumber) {
@@ -195,7 +210,17 @@ export default Vue.extend({
   methods: {
     submit() {
       this.$store.commit('setRegister', {
-        health: this.health,
+        health: {
+          ...this.health,
+          mental_disorder: this.mentalDisorders
+            .map(item => {
+              if (item === 4) {
+                return this.otherMental;
+              }
+              return this.mentalItems.find(({ value }) => value === item)!.text;
+            })
+            .join(),
+        },
         participant: this.participant,
       });
       this.$router.push('/terms');

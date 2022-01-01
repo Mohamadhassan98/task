@@ -1,7 +1,7 @@
 <template>
   <v-form v-model="form" @submit.prevent="login">
     <v-card class="mx-auto mt-10 mb-10" width="500" outlined>
-      <v-card-title> ورود </v-card-title>
+      <v-card-title> ورود (شماره تلفن همراه خود را وارد نمایید.) </v-card-title>
       <v-card-text>
         <v-text-field
           v-model="mobile"

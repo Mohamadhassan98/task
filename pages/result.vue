@@ -1,10 +1,10 @@
 <template>
   <v-card width="100vw" min-height="100vh" class="wrapper">
     <v-card-title class="d-flex flex-column align-center">
-      با تشکر از مشارکت شما
+      با تشکر از مشارکت شما در این پژوهش
     </v-card-title>
     <v-card-title class="d-flex flex-column align-start">
-      نتایج پرسشنامه و آزمون حافظه شما
+      نتایج آزمون حافظه رویدادی شما
       <v-divider class="divider" />
     </v-card-title>
     <v-card-text class="terms">
@@ -14,7 +14,7 @@
           md="6"
           class="text-center d-flex flex-column align-center font-weight-bold reaction"
         >
-          <div style="width: 300px; height: 300px">
+          <div style="width: 300px; height: 300px" class="mb-12">
             <svg
               viewBox="0 0 300 300"
               preserveAspectRatio="xMinYMin meet"
@@ -44,18 +44,23 @@
               />
               <g>
                 <text x="150" y="150" text-anchor="middle" dy="1em">
-                  <tspan x="150" font-size="80" class="percent">
+                  <tspan x="150" font-size="80">
                     {{ $store.state.result.score }}٪
                   </tspan>
+                </text>
+                <text x="150" y="180" text-anchor="middle" dy="1em">
+                  <tspan>امتیاز به دست آمده</tspan>
                 </text>
               </g>
             </svg>
           </div>
-          میانگین زمان عکس‌العمل شما:
-          <br />
-          {{ $store.state.result.reaction_time_mean }} میلی ثانیه
+          <div class="border">
+            میانگین زمان عکس‌العمل شما:
+            <br />
+            {{ $store.state.result.reaction_time_mean }} میلی ثانیه
+          </div>
         </v-col>
-        <v-col cols="12" md="5" class="text-center">
+        <v-col cols="12" md="6" class="text-center">
           {{ $store.state.result.text }}
         </v-col>
       </v-row>
@@ -65,6 +70,11 @@
           آزمون را دوباره تکرار کنید.
           <br />
           {{ $store.state.result.next_date | formatDateTime }}
+        </v-col>
+        <v-col cols="12" class="d-flex">
+          <v-spacer />
+          <v-btn large to="/">خروج</v-btn>
+          <v-spacer />
         </v-col>
       </v-row>
     </v-card-text>
@@ -124,5 +134,12 @@ export default Vue.extend({
 }
 .date {
   font-size: 18px;
+  border: 1px solid black;
+  padding: 16px;
+  background-color: var(--v-info-lighten4);
+}
+.border {
+  border: 1px solid black;
+  padding: 16px;
 }
 </style>

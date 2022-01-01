@@ -8,8 +8,8 @@
       class="d-flex flex-column align-center justify-start flex-grow-1"
     >
       <template v-if="!current && !loadingState">
-        <div class="text-center my-16">
-          در حال بارگیری تصاویر هستیم.
+        <div class="text-center my-16 loading-text">
+          <span v-if="!currentIndex">در حال بارگیری تصاویر هستیم.</span>
           <br />
           لطفاً منتظر بمانید.
         </div>
@@ -68,19 +68,23 @@ export default Vue.extend({
   },
   watch: {
     loadedCount(val) {
+      if (this.loadingInterval) {
+        return;
+      }
       if (val === this.info.images.length) {
-        console.log(val);
         this.loadingState = '3';
-        this.loadingInterval = window.setInterval(() => {
-          if (this.loadingState && isNaN(+this.loadingState)) {
-            clearInterval(this.loadingInterval || 0);
-            this.loadingState = '';
-            this.loadingInterval = null;
-            this.nextImage();
-          } else {
-            this.loadingState = (+this.loadingState - 1 || 'شروع').toString();
-          }
-        }, 1000);
+        this.$nextTick(() => {
+          this.loadingInterval = window.setInterval(() => {
+            if (this.loadingState && isNaN(+this.loadingState)) {
+              clearInterval(this.loadingInterval || 0);
+              this.loadingState = '';
+              this.loadingInterval = null;
+              this.nextImage();
+            } else {
+              this.loadingState = (+this.loadingState - 1 || 'شروع').toString();
+            }
+          }, 1000);
+        });
       }
     },
   },
@@ -184,7 +188,7 @@ export default Vue.extend({
 </script>
 <style lang="scss" scoped>
 .wrapper {
-  background-color: #c8cfd7;
+  background-color: #e3e3e3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -202,6 +206,10 @@ export default Vue.extend({
 }
 .loader {
   font-weight: 700;
-  font-size: 30px;
+  font-size: 36px;
+  text-align: center;
+}
+.loading-text {
+  font-size: 20px;
 }
 </style>
