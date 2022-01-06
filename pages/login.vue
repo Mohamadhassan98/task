@@ -1,7 +1,9 @@
 <template>
   <v-form v-model="form" @submit.prevent="login">
     <v-card class="mx-auto mt-10 mb-10" width="500" outlined>
-      <v-card-title> ورود (شماره تلفن همراه خود را وارد نمایید.) </v-card-title>
+      <v-card-title>
+        ورود <span class="help">(شماره تلفن همراه خود را وارد نمایید.)</span>
+      </v-card-title>
       <v-card-text>
         <v-text-field
           v-model="mobile"
@@ -70,3 +72,14 @@ export default Vue.extend({
   },
 });
 </script>
+<style lang="scss" scoped>
+.help {
+  font-size: 14px;
+  font-weight: 400 !important;
+  color: #43464f;
+  display: flex;
+  align-items: center;
+  line-height: 14px;
+  margin-right: 4px;
+}
+</style>

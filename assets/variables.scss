@@ -78,6 +78,9 @@ $body-font-family: 'IRANSans', sans-serif !default;
   font-family: 'IRANSans', sans-serif !important;
   font-weight: 600 !important;
 }
+.v-application {
+  font-family: 'IRANSans', sans-serif !important;
+}
 
 body,
 html,
@@ -143,49 +146,6 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
-}
-
-.swal2-container {
-  direction: rtl;
-  font-family: $body-font-family;
-}
-.swal2-popup {
-  background: var(--v-accent-base);
-}
-.swal2-title,
-.swal2-html-container {
-  color: var(--v-text-base);
-  white-space: pre-line;
-}
-.swal2-styled {
-  &.swal2-confirm {
-    background-color: var(--v-success-base);
-  }
-  &.swal2-cancel {
-    background-color: var(--v-error-base);
-  }
-}
-.swal2-icon {
-  &.swal2-question {
-    color: var(--v-primary-base);
-    border-color: var(--v-primary-lighten1);
-  }
-  &.swal2-success {
-    color: var(--v-success-base);
-    border-color: var(--v-success-lighten1);
-  }
-  &.swal2-warning {
-    color: var(--v-warning-base);
-    border-color: var(--v-warning-lighten1);
-  }
-  &.swal2-error {
-    color: var(--v-error-base);
-    border-color: var(--v-error-lighten1);
-  }
-  &.swal2-info {
-    color: var(--v-info-base);
-    border-color: var(--v-info-lighten1);
-  }
 }
 
 legend, label {

@@ -8,7 +8,6 @@ api/participant-api.ts
 api/question-api.ts
 api/register-api.ts
 api/training-generate-api.ts
-base.ts
 common.ts
 configuration.ts
 git_push.sh

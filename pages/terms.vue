@@ -1,6 +1,6 @@
 <template>
   <v-card width="100vw" height="100vh" class="wrapper">
-    <v-card-title>درباره این پژوهش و شرایط شرکت در آن</v-card-title>
+    <v-card-title>درباره این پژوهش و نحوه شرکت در آن</v-card-title>
     <v-card-subtitle>لطفاً متن زیر را با دقت بخوانید.</v-card-subtitle>
     <v-card-text class="terms">
       <p>{{ terms }}</p>
@@ -57,7 +57,7 @@ export default Vue.extend({
     font-size: 16px;
   }
 
-  padding: 16px 32px;
+  padding: 16px 64px;
   overflow-y: auto;
 }
 </style>

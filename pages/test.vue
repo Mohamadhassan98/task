@@ -67,5 +67,8 @@ export default Vue.extend({
 }
 .divider {
   width: 100%;
+  img {
+    max-width: calc(100vw - 64px);
+  }
 }
 </style>

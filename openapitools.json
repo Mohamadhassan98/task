@@ -7,7 +7,7 @@
 			"api": {
 				"generatorName": "typescript-axios",
 				"output": "#{cwd}/lib/api",
-				"inputSpec": "http://192.168.43.123:8000/doc?format=openapi",
+				"inputSpec": "http://5.160.1.186:12001/doc?format=openapi",
 				"apiPackage": "api",
 				"modelPackage": "model",
 				"additionalProperties": {

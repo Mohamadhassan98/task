@@ -37,6 +37,39 @@ export const HelpApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        helpFirstPageRead: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/help/first_page`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         helpHealthRead: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/help/health`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -72,39 +105,6 @@ export const HelpApiAxiosParamCreator = function (configuration?: Configuration)
          */
         helpHowDoTaskRead: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/help/how_do_task`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        helpQuestionTextRead: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/help/question_text`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -179,6 +179,15 @@ export const HelpApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        async helpFirstPageRead(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Term>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.helpFirstPageRead(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         async helpHealthRead(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHealthQuestion>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.helpHealthRead(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -190,15 +199,6 @@ export const HelpApiFp = function(configuration?: Configuration) {
          */
         async helpHowDoTaskRead(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HowDoTask>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.helpHowDoTaskRead(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async helpQuestionTextRead(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Term>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.helpQuestionTextRead(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -225,6 +225,14 @@ export const HelpApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        helpFirstPageRead(options?: any): AxiosPromise<Term> {
+            return localVarFp.helpFirstPageRead(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         helpHealthRead(options?: any): AxiosPromise<GetHealthQuestion> {
             return localVarFp.helpHealthRead(options).then((request) => request(axios, basePath));
         },
@@ -235,14 +243,6 @@ export const HelpApiFactory = function (configuration?: Configuration, basePath?
          */
         helpHowDoTaskRead(options?: any): AxiosPromise<HowDoTask> {
             return localVarFp.helpHowDoTaskRead(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        helpQuestionTextRead(options?: any): AxiosPromise<Term> {
-            return localVarFp.helpQuestionTextRead(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -268,6 +268,16 @@ export class HelpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HelpApi
      */
+    public helpFirstPageRead(options?: any) {
+        return HelpApiFp(this.configuration).helpFirstPageRead(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HelpApi
+     */
     public helpHealthRead(options?: any) {
         return HelpApiFp(this.configuration).helpHealthRead(options).then((request) => request(this.axios, this.basePath));
     }
@@ -280,16 +290,6 @@ export class HelpApi extends BaseAPI {
      */
     public helpHowDoTaskRead(options?: any) {
         return HelpApiFp(this.configuration).helpHowDoTaskRead(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HelpApi
-     */
-    public helpQuestionTextRead(options?: any) {
-        return HelpApiFp(this.configuration).helpQuestionTextRead(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

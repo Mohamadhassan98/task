@@ -5,7 +5,7 @@
       <v-divider class="divider" />
     </v-card-title>
     <v-card-text
-      class="d-flex flex-column align-center justify-start flex-grow-1"
+      class="d-flex flex-column align-center justify-center flex-grow-1"
     >
       <template v-if="!current && !loadingState">
         <div class="text-center my-16 loading-text">
@@ -15,7 +15,7 @@
         </div>
         <v-progress-circular indeterminate size="64" />
       </template>
-      <span v-if="loadingState" class="loader mt-16">
+      <span v-if="loadingState" class="loader">
         {{ loadingState }}
       </span>
       <my-image
@@ -201,12 +201,13 @@ export default Vue.extend({
 }
 .image {
   width: auto;
-  height: min(500px, 100vh - 150px);
+  max-width: 100vw;
+  max-height: min(500px, 100vh - 150px);
   margin-bottom: 20px;
 }
 .loader {
   font-weight: 700;
-  font-size: 36px;
+  font-size: 48px;
   text-align: center;
 }
 .loading-text {

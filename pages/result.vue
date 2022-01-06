@@ -60,16 +60,16 @@
             {{ $store.state.result.reaction_time_mean }} میلی ثانیه
           </div>
         </v-col>
-        <v-col cols="12" md="6" class="text-center">
+        <v-col cols="12" md="6" class="text-center terms">
           {{ $store.state.result.text }}
         </v-col>
       </v-row>
       <v-row v-if="$store.state.result.next_date" align="center">
         <v-col cols="12" class="text-center date">
-          با توجه به مشخصات این پژوهش، لطفاً در تاریخ زیر به همین سایت مراجعه و
-          آزمون را دوباره تکرار کنید.
+          با توجه به روش تحقیق این پژوهش، لطفاً در تاریخ زیر به همین سایت مراجعه
+          و آزمون را دوباره تکرار کنید.
           <br />
-          {{ $store.state.result.next_date | formatDateTime }}
+          <span>{{ $store.state.result.next_date | formatDateTime }}</span>
         </v-col>
         <v-col cols="12" class="d-flex">
           <v-spacer />
@@ -104,11 +104,9 @@ export default Vue.extend({
   flex-direction: column;
 }
 .terms {
-  margin-left: 32px;
-  margin-right: 32px;
-  width: calc(100% - 64px);
-  padding-top: 16px;
-  padding-bottom: 16px;
+  width: 100%;
+  padding: 16px 32px;
+  font-size: 18px;
 }
 .divider {
   width: 100%;
@@ -137,6 +135,10 @@ export default Vue.extend({
   border: 1px solid black;
   padding: 16px;
   background-color: var(--v-info-lighten4);
+  span {
+    font-size: 24px;
+    font-weight: 600;
+  }
 }
 .border {
   border: 1px solid black;

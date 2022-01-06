@@ -30,7 +30,7 @@
         :disabled="!questions[last].answer"
         @click="submit"
       >
-        ارسال جواب‌ها
+        رفتن به مرحله بعد
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -108,6 +108,7 @@ export default Vue.extend({
 .font {
   ::v-deep.v-label {
     font-size: 20px !important;
+    white-space: normal;
   }
 }
 .question {

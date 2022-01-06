@@ -69,7 +69,7 @@
           <v-col cols="12" md="9">
             <p>{{ formText.mental_disorder }}</p>
           </v-col>
-          <v-col cols="12" md="9" class="d-flex">
+          <v-col cols="12" md="9" class="d-flex flex-column flex-md-row">
             <v-checkbox
               v-for="(mental, index) in mentalItems"
               :key="mental.value"
@@ -163,7 +163,7 @@ export default Vue.extend({
           value: 3,
         },
         {
-          text: 'سایر',
+          text: 'سایر (در قسمت مقابل وارد کنید.)',
           value: 4,
         },
       ],

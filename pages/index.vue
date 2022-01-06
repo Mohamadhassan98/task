@@ -1,20 +1,29 @@
 <template>
   <div class="background">
-    <div>
-      امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
-      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
-      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
-      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه است.امروز شنبه
-      است.امروز شنبه است.امروز شنبه است.امروز شنبه است.
-    </div>
+    <div>{{ terms }}</div>
     <v-btn x-large to="/login" class="btn">ورود برای شرکت در پژوهش</v-btn>
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue';
+import { HelpApiFp } from '~/lib/api';
 
 export default Vue.extend({
   layout: 'full-width',
+  data() {
+    return {
+      terms: '',
+    };
+  },
+  mounted() {
+    HelpApiFp()
+      .helpFirstPageRead()
+      .then(result =>
+        result().then(result => {
+          this.terms = result.data.text;
+        })
+      );
+  },
 });
 </script>
 <style lang="scss" scoped>
