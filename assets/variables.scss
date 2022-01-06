@@ -1,85 +1,14 @@
 @import "~vuetify/src/styles/styles.sass";
 @import "~assets/mixins.scss";
+@import "~assets/fonts/IranYekan/fontiran.css";
 
-@font-face {
-  font-family: 'IRYekan';
-  src: url('~assets/fonts/eot/iranyekanwebbold(fanum).eot?#') format('eot'),
-    /* IE6–8 */ url('~assets/fonts/woff2/iranyekanwebbold(fanum).woff2')
-  format('woff2'),
-    /* Chrome36+, Opera24+*/
-  url('~assets/fonts/woff/iranyekanwebbold(fanum).woff')
-  format('woff');
-
-  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-  font-weight: 900;
-}
-@font-face {
-  font-family: 'IRYekan';
-  src: url('~assets/fonts/eot/iranyekanweblight(fanum).eot?#') format('eot'),
-    /* IE6–8 */ url('~assets/fonts/woff2/iranyekanweblight(fanum).woff2')
-  format('woff2'),
-    /* Chrome36+, Opera24+*/
-  url('~assets/fonts/woff/iranyekanweblight(fanum).woff')
-  format('woff');
-
-  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-  font-weight: 200;
-}
-@font-face {
-  font-family: 'IRYekan';
-  src: url('~assets/fonts/eot/iranyekanwebregular(fanum).eot?#') format('eot'),
-    /* IE6–8 */ url('~assets/fonts/woff2/iranyekanwebregular(fanum).woff2')
-  format('woff2'),
-    /* Chrome36+, Opera24+*/
-  url('~assets/fonts/woff/iranyekanwebregular(fanum).woff')
-  format('woff');
-
-  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-  font-weight: 600;
-}
-@font-face {
-  font-family: 'IRANSans';
-  src: url('~assets/fonts/eot/IRANSansWeb(FaNum)_Light.eot?#') format('eot'),
-    /* IE6–8 */ url('~assets/fonts/eot/IRANSansWeb(FaNum)_Light.eot')
-  format('woff2'),
-    /* Chrome36+, Opera24+*/
-  url('~assets/fonts/woff/IRANSansWeb(FaNum)_Light.woff')
-  format('woff');
-
-  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-  font-weight: 200;
-}
-@font-face {
-  font-family: 'IRANSans';
-  src: url('~assets/fonts/eot/IRANSansWeb(FaNum)_Bold.eot?#') format('eot'),
-    /* IE6–8 */ url('~assets/fonts/eot/IRANSansWeb(FaNum)_Bold.eot')
-  format('woff2'),
-    /* Chrome36+, Opera24+*/
-  url('~assets/fonts/woff/IRANSansWeb(FaNum)_Bold.woff')
-  format('woff');
-
-  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-  font-weight: 900;
-}
-@font-face {
-  font-family: 'IRANSans';
-  src: url('~assets/fonts/eot/IRANSansWeb(FaNum)_Medium.eot?#') format('eot'),
-    /* IE6–8 */ url('~assets/fonts/eot/IRANSansWeb(FaNum)_Medium.eot')
-  format('woff2'),
-    /* Chrome36+, Opera24+*/
-  url('~assets/fonts/woff/IRANSansWeb(FaNum)_Medium.woff')
-  format('woff');
-
-  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-  font-weight: 600;
-}
-$body-font-family: 'IRANSans', sans-serif !default;
+$body-font-family: 'iranyekan', sans-serif !default;
 .v-application--wrap {
-  font-family: 'IRANSans', sans-serif !important;
+  font-family: 'iranyekan', sans-serif !important;
   font-weight: 600 !important;
 }
 .v-application {
-  font-family: 'IRANSans', sans-serif !important;
+  font-family: 'iranyekan', sans-serif !important;
 }
 
 body,
@@ -96,7 +25,7 @@ label,
 td,
 div,
 .v-card__title {
-  font-family: 'IRANSans', sans-serif !important;
+  font-family: 'iranyekan', sans-serif !important;
   font-weight: 600 !important;
 }
 th {
