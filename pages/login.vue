@@ -36,7 +36,7 @@ export default Vue.extend({
       mobile: '',
       form: false,
       mobileValid: (value: string) =>
-        /^(0?)9\d{9}$/.test(value) || 'شماره وارد شده معتبر نیست.',
+        /^(0|۰?)[9۹][0-9۰-۹]{9}$/.test(value) || 'شماره وارد شده معتبر نیست.',
       date: '',
     };
   },
@@ -46,10 +46,19 @@ export default Vue.extend({
     },
   },
   methods: {
+    formatNumberToEnglish(value: string) {
+      const oldValue = '۰۱۲۳۴۵۶۷۸۹';
+      const newValue = '0123456789';
+      let result = value;
+      for (let i = 0; i < 10; i++) {
+        result = result.replace(new RegExp(oldValue[i], 'g'), newValue[i]);
+      }
+      return result;
+    },
     async login() {
       const { data } = await (
         await ParticipantApiFp().participantExistsRead(
-          this.mobile.padStart(11, '0')
+          this.formatNumberToEnglish(this.mobile.padStart(11, '0'))
         )
       )();
       if (data.task_date) {

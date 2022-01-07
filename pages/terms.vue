@@ -55,6 +55,7 @@ export default Vue.extend({
   p {
     text-align: justify;
     font-size: 16px;
+    white-space: break-spaces;
   }
 
   padding: 16px 64px;
