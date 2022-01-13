@@ -155,7 +155,7 @@ export default Vue.extend({
           value: 1,
         },
         {
-          text: 'اختلال خفیف شناختی',
+          text: 'اختلال شناختی خفیف (MCI)',
           value: 2,
         },
         {
