@@ -1,7 +1,7 @@
 <template>
   <v-card v-if="questions.length" width="100vw">
     <v-card-subtitle class="question">
-      {{ last + 1 }}. {{ questions[last].text }}
+      {{ last + 1 }}. <span v-html="questions[last].text" />
     </v-card-subtitle>
     <v-card-text class="font">
       <v-radio-group v-model="questions[last].answer">
