@@ -60,7 +60,7 @@
             {{ $store.state.result.reaction_time_mean }} میلی ثانیه
           </div>
         </v-col>
-        <v-col cols="12" md="6" class="text-center terms">
+        <v-col cols="12" md="6" class="text-center terms break">
           {{ $store.state.result.text }}
         </v-col>
       </v-row>
@@ -95,6 +95,7 @@ export default Vue.extend({
     if (!this.$store.state.result?.score) {
       this.$router.replace('/login');
     }
+    this.$store.commit('resetRegister');
   },
 });
 </script>
@@ -107,6 +108,9 @@ export default Vue.extend({
   width: 100%;
   padding: 16px 32px;
   font-size: 18px;
+}
+.break {
+  white-space: break-spaces;
 }
 .divider {
   width: 100%;

@@ -1,13 +1,13 @@
 <template>
   <v-card width="100vw" height="100vh" class="wrapper">
-    <v-card-title>درباره این پژوهش و نحوه شرکت در آن</v-card-title>
+    <v-card-title>درباره پرسشنامه</v-card-title>
     <v-card-subtitle>لطفاً متن زیر را با دقت بخوانید.</v-card-subtitle>
     <v-card-text class="terms">
       <p>{{ terms }}</p>
     </v-card-text>
     <v-card-actions>
       <v-spacer />
-      <v-btn :x-large="!mobile" to="/question-terms" left color="primary">
+      <v-btn :x-large="!mobile" to="/questions" left color="primary">
         مرحله بعد
       </v-btn>
     </v-card-actions>
@@ -32,7 +32,7 @@ export default Vue.extend({
       return;
     }
     HelpApiFp()
-      .helpTermsRead()
+      .helpQuestionHelpRead()
       .then(result =>
         result().then(result => {
           this.terms = result.data.text;

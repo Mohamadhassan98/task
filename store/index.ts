@@ -15,6 +15,9 @@ export const mutations = {
       ...val,
     };
   },
+  resetRegister(state: { signUp: TaskRegister }) {
+    state.signUp = {} as any;
+  },
   setResult(
     state: {
       result: Pick<ApplyTask, 'next_date' | 'reaction_time_mean' | 'score'>;

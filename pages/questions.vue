@@ -4,13 +4,18 @@
       {{ last + 1 }}. {{ questions[last].text }}
     </v-card-subtitle>
     <v-card-text class="font">
-      <v-radio-group v-model="questions[last].answer" @change="next">
+      <v-radio-group v-model="questions[last].answer">
         <v-radio
           v-for="answer in questions[last].answers"
           :key="answer.id"
           :value="answer.id"
           :label="answer.text"
-        />
+          @click="next"
+        >
+          <template #label>
+            <span v-html="answer.text" />
+          </template>
+        </v-radio>
       </v-radio-group>
     </v-card-text>
     <v-card-actions>
@@ -45,6 +50,7 @@ export default Vue.extend({
   data() {
     return {
       questions: [] as (Question & { answer?: number })[],
+      loadingNext: false,
     };
   },
   computed: {
@@ -71,14 +77,16 @@ export default Vue.extend({
   methods: {
     next() {
       const currentId = this.questions[this.last].next_id;
-      if (!currentId) {
+      if (!currentId || this.loadingNext) {
         // do nothing
       } else {
+        this.loadingNext = true;
         QuestionApiFp()
           .questionRead_1(currentId)
           .then(result =>
             result().then(result => {
               this.questions = [...this.questions, result.data];
+              this.loadingNext = false;
             })
           );
       }

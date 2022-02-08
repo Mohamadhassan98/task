@@ -45,6 +45,7 @@ export default Vue.extend({
     top: 20%;
     left: 12.5%;
     color: white;
+    white-space: break-spaces;
     @include mobile-only {
       left: 0;
       right: 0;

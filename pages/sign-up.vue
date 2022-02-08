@@ -81,15 +81,6 @@
               class="ml-2"
             />
           </v-col>
-          <v-col v-if="mentalDisorders.includes(4)" cols="12" md="3">
-            <v-text-field
-              v-model="otherMental"
-              label="نوع بیماری"
-              :rules="[$required]"
-              dense
-              outlined
-            />
-          </v-col>
         </v-row>
         <v-row>
           <v-col cols="12">
@@ -163,8 +154,12 @@ export default Vue.extend({
           value: 3,
         },
         {
-          text: 'سایر (در قسمت مقابل وارد کنید.)',
+          text: 'پارکینسون',
           value: 4,
+        },
+        {
+          text: 'هیچ کدام',
+          value: 0,
         },
       ],
       educationItems: [
