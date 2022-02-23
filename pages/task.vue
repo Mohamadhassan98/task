@@ -27,12 +27,12 @@
         @loaded="imageLoaded(image.id)"
         @click="imageClick"
       />
-      <v-progress-linear
-        v-if="progress !== null"
-        v-model="progress"
-        :height="20"
-        class="loading-image"
-      />
+      <!--      <v-progress-linear-->
+      <!--        v-if="progress !== null"-->
+      <!--        v-model="progress"-->
+      <!--        :height="20"-->
+      <!--        class="loading-image"-->
+      <!--      />-->
     </v-card-text>
   </v-card>
 </template>
@@ -196,9 +196,9 @@ export default Vue.extend({
 .divider {
   width: 100%;
 }
-.loading-image {
-  transition-duration: 30ms;
-}
+//.loading-image {
+//  transition-duration: 30ms;
+//}
 .image {
   width: auto;
   max-width: 100vw;

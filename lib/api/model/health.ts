@@ -38,6 +38,12 @@ export interface Health {
      * @memberof Health
      */
     mental_disorder?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Health
+     */
+    get_medicine?: boolean;
 }
 
 

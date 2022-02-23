@@ -38,6 +38,12 @@ export interface GetHealthQuestion {
      * @memberof GetHealthQuestion
      */
     mental_disorder: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHealthQuestion
+     */
+    get_medicine: string;
 }
 
 

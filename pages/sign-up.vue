@@ -69,7 +69,7 @@
           <v-col cols="12" md="9">
             <p>{{ formText.mental_disorder }}</p>
           </v-col>
-          <v-col cols="12" md="9" class="d-flex flex-column flex-md-row">
+          <v-col cols="12" class="d-flex flex-column flex-md-row">
             <v-checkbox
               v-for="(mental, index) in mentalItems"
               :key="mental.value"
@@ -104,8 +104,21 @@
               :label="formText.get_drug || ''"
               row
             >
-              <v-radio :value="0" label="خیر" />
-              <v-radio :value="1" label="بله" />
+              <v-radio :value="false" label="خیر" />
+              <v-radio :value="true" label="بله" />
+            </v-radio-group>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-radio-group
+              v-model="health.get_medicine"
+              :rules="[$required]"
+              :label="formText.get_medicine || ''"
+              row
+            >
+              <v-radio :value="false" label="خیر" />
+              <v-radio :value="true" label="بله" />
             </v-radio-group>
           </v-col>
         </v-row>
@@ -142,20 +155,28 @@ export default Vue.extend({
       otherMental: '',
       mentalItems: [
         {
-          text: 'سکته یا تومور مغزی',
+          text: 'اختلالات عروقی یا سکته مغزی',
           value: 1,
         },
         {
-          text: 'اختلال شناختی خفیف (MCI)',
+          text: 'تومور مغزی',
           value: 2,
         },
         {
-          text: 'آلزایمر (زوال عقل)',
+          text: 'اختلال شناختی خفیف (MCI)',
           value: 3,
         },
         {
-          text: 'پارکینسون',
+          text: 'آلزایمر (زوال عقل)',
           value: 4,
+        },
+        {
+          text: 'پارکینسون',
+          value: 5,
+        },
+        {
+          text: 'سایر اختلالات روانپزشکی تحت درمان',
+          value: 6,
         },
         {
           text: 'هیچ کدام',
@@ -208,12 +229,9 @@ export default Vue.extend({
         health: {
           ...this.health,
           mental_disorder: this.mentalDisorders
-            .map(item => {
-              if (item === 4) {
-                return this.otherMental;
-              }
-              return this.mentalItems.find(({ value }) => value === item)!.text;
-            })
+            .map(
+              item => this.mentalItems.find(({ value }) => value === item)!.text
+            )
             .join(),
         },
         participant: this.participant,
