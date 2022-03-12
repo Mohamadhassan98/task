@@ -60,7 +60,7 @@
             {{ $store.state.result.reaction_time_mean }} میلی ثانیه
           </div>
         </v-col>
-        <v-col cols="12" md="6" class="text-center terms break">
+        <v-col cols="12" md="6" class="text-justify terms break">
           {{ $store.state.result.text }}
         </v-col>
       </v-row>

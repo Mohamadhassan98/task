@@ -2,7 +2,7 @@
   <v-form v-model="form" @submit.prevent="login">
     <v-card class="mx-auto mt-10 mb-10" width="500" outlined>
       <v-card-title>
-        ورود <span class="help">(شماره تلفن همراه خود را وارد نمایید.)</span>
+        ورود <span class="help">(شماره تلفن همراه آزمون‌دهنده)</span>
       </v-card-title>
       <v-card-text>
         <v-text-field

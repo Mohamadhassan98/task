@@ -155,11 +155,11 @@ export default Vue.extend({
       otherMental: '',
       mentalItems: [
         {
-          text: 'اختلالات عروقی یا سکته مغزی',
+          text: 'بیماری‌های قلبی-عروقی (مثل سکته قلبی یا فشار خون)',
           value: 1,
         },
         {
-          text: 'تومور مغزی',
+          text: 'سکته مغزی یا سابقه تومور مغزی',
           value: 2,
         },
         {
@@ -206,6 +206,15 @@ export default Vue.extend({
         },
       ],
     };
+  },
+  watch: {
+    mentalDisorders(newVal: number[], oldVal: number[]) {
+      if (newVal.includes(0) && !oldVal.includes(0)) {
+        this.mentalDisorders = [0];
+      } else if (oldVal.includes(0) && newVal.length > 1) {
+        this.mentalDisorders = newVal.filter(val => val !== 0);
+      }
+    },
   },
   mounted() {
     const mobileNumber = this.$store.state.signUp.participant?.mobile_number;
