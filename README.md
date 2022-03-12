@@ -2,11 +2,12 @@
 
 ## Build Setup
 
-```bash
+<pre>bash
 # install dependencies
-$ yarn install
+$ yarn
 
 # serve with hot reload at localhost:3000
+<< <strong>For development phase only</strong> >>
 $ yarn dev
 
 # build for production and launch server
@@ -14,8 +15,11 @@ $ yarn build
 $ yarn start
 
 # generate static project
+<< <strong>For static html export (for environments without Node installed)</strong> >>
 $ yarn generate
-```
+</pre>
+
+**For a simple build on a normal server, you will simply need command 1, 3 and 4 respectively.**
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
